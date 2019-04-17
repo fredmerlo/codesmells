@@ -15,14 +15,14 @@ namespace CodeSmells
                         ProductName = "Pulled Pork",
                         Price = 6.99m,
                         Weight = 0.5m,
-                        PricingMethod = "PerPound"
+                        PricingMethod = PriceMethodEnum.PerPound
                     },
 
                     new Product {
                         ProductName = "Coke",
                         Price = 3m,
                         Quantity = 2,
-                        PricingMethod = "PerItem"
+                        PricingMethod = PriceMethodEnum.PerItem
                     }
                 }
             };
