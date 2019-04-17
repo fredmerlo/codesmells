@@ -7,7 +7,7 @@ namespace CodeSmells
         PerPound,
         PerItem
     }
-    public class Product
+    public abstract class Product
     {
         public string ProductName;
         public decimal Price;
@@ -15,30 +15,11 @@ namespace CodeSmells
         public int? Quantity;
         public PriceMethodEnum PricingMethod;
 
-        public decimal ProductPrice
+        public abstract decimal ProductPrice
         {
-            get
-            {
-
-                if (this.PricingMethod == PriceMethodEnum.PerPound)
-                {
-                    return this.Weight.Value * this.Price;
-                }
-
-                return this.Quantity.Value * this.Price;
-            }
+            get;
         }
 
-        public override string ToString()
-        {
-
-            if (this.PricingMethod == PriceMethodEnum.PerPound)
-            {
-                return String.Format("{0} ${1} ({2} pounds at ${3} per pound)", this.ProductName, this.ProductPrice, this.Weight, this.Price);
-            }
-
-            return String.Format("{0} ${1} ({2} items at ${3} each)", this.ProductName, this.ProductPrice, this.Quantity, this.Price);
-        }
-
+        public abstract override string ToString();
     }
 }
