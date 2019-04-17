@@ -18,7 +18,8 @@ namespace CodeSmells
 
             return this.ProductName.Equals(other.ProductName) &&
                    this.Quantity.Value.Equals(other.Quantity.Value) &&
-                   this.Price.Equals(other.Price);
+                   this.Price.Equals(other.Price) &&
+                   this.PricingMethod.Equals(other.PricingMethod);
         }
     }
 }
