@@ -34,12 +34,12 @@ namespace CodeSmells
             return product;
         }
 
-        private Product GetProductStrategy(PriceMethodEnum priceMethodEnum, string s, decimal price1)
+        private Product GetProductStrategy(PriceMethodEnum priceMethodEnum, string name, decimal price)
         {
             var product = strategies[priceMethodEnum]();
             product.PricingMethod = priceMethodEnum;
-            product.ProductName = s;
-            product.Price = price1;
+            product.ProductName = name;
+            product.Price = price;
             return product;
         }
     }
