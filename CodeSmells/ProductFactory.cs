@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
 
 namespace CodeSmells
 {
@@ -21,9 +20,7 @@ namespace CodeSmells
 
         public Product CreateProductFor(PriceMethodEnum priceMethod, string name, decimal price, int quantity)
         {
-            var product = strategies[priceMethod]();
-            product.ProductName = name;
-            product.Price = price;
+            var product = GetProductStrategy(priceMethod, name, price);
             product.Quantity = quantity;
 
             return product;
@@ -31,11 +28,18 @@ namespace CodeSmells
 
         public Product CreateProductFor(PriceMethodEnum priceMethod, string name, decimal price, decimal weight)
         {
-            var product = strategies[priceMethod]();
-            product.ProductName = name;
-            product.Price = price;
+            var product = GetProductStrategy(priceMethod, name, price);
             product.Weight = weight;
 
+            return product;
+        }
+
+        private Product GetProductStrategy(PriceMethodEnum priceMethodEnum, string s, decimal price1)
+        {
+            var product = strategies[priceMethodEnum]();
+            product.PricingMethod = priceMethodEnum;
+            product.ProductName = s;
+            product.Price = price1;
             return product;
         }
     }
